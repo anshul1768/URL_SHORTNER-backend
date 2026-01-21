@@ -5,7 +5,7 @@ import cors from 'cors';
 const app=express();
 app.use(
   cors({
-    origin: "https://frontend-beige-kappa-57.vercel.app/", // ✅ frontend
+    origin: "https://frontend-beige-kappa-57.vercel.app", // ✅ frontend
     credentials: true,              // ✅ cookies allow
   })
 );
