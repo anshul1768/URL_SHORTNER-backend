@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
     email,
     password,
   });
-  const safeUser = await User.findById(user._id).select("-password _id");
+  const safeUser = await User.findById(user._id).select("-password -_id");
   console.log(safeUser);
   res
     .status(201)
