@@ -47,4 +47,15 @@ const loginUser = async (req, res) => {
     .cookie("accessToken", accessToken, options)
     .json(new ApiResponse(201, safeUser, "user logged in successfully."));
 };
-export { registerUser, loginUser };
+
+const logoutUser=(req,res)=>{
+  return res
+    .status(200)
+    .clearCookie("accessToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    })
+    .json({ message: "Logged out successfully" });
+}
+export { registerUser, loginUser,logoutUser };
