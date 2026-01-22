@@ -26,7 +26,7 @@ const loginUser = async (req, res) => {
   console.log(email);
   const user = await User.findOne({ email });
   if (!user) {
-    throw new ApiError(401, "unauthorised user please register");
+    res.status(401).json(new ApiError(401,"user not authorized"));
   }
 
   const isCorrect = user.isPasswordCorrect(password);

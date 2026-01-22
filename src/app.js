@@ -4,10 +4,24 @@ import cors from 'cors';
 import authRouter from "./routes/auth.routes.js";
 import urlRouter from "./routes/createUrl.routes.js";
 const app=express();
+const allowedOrigins = [
+  "https://frontend-beige-kappa-57.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(
   cors({
-    origin: "https://frontend-beige-kappa-57.vercel.app", // ✅ frontend
-    credentials: true,              // ✅ cookies allow
+    origin: function (origin, callback) {
+      // ✅ Postman / server-to-server requests me origin undefined hota hai
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 app.use(express.json());
