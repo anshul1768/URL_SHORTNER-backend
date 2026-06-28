@@ -5,7 +5,7 @@ import authRouter from "./routes/auth.routes.js";
 import urlRouter from "./routes/createUrl.routes.js";
 const app=express();
 const allowedOrigins = [
-  "https://frontend-beige-kappa-57.vercel.app",
+  "https://url-shortner-frontend-beige.vercel.app",
   "http://localhost:5173",
 ];
 
