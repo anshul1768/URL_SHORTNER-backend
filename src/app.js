@@ -7,7 +7,7 @@ import { verifyJWT } from "./middlewares/auth.middleware.js";
 import { redirectUrl } from "./controllers/shortUrl.controller.js";
 const app=express();
 const allowedOrigins = [
-  "https://url-shortner-frontend-beige.vercel.app",
+  "https://url-shortner-frontend-gamma-taupe.vercel.app",
   "http://localhost:5173",
 ];
 
