@@ -4,7 +4,7 @@ import { ApiResponse } from "../utils/Api-Response.js";
 const registerUser = async (req, res) => {
   const { username, password, email } = req.body;
 
-  const existingUser = await User.findOne({ username: username });
+  const existingUser = await User.findOne({ email: email });
 
   if (existingUser) {
     throw new ApiError(409, "User will this email or username already exists");
@@ -29,7 +29,7 @@ const loginUser = async (req, res) => {
     res.status(401).json(new ApiError(401,"user not authorized"));
   }
 
-  const isCorrect = user.isPasswordCorrect(password);
+  const isCorrect = await user.isPasswordCorrect(password);
   if (!isCorrect) {
     throw new ApiError(401, "incorrect password");
   }
